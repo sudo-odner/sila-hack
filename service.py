@@ -28,8 +28,9 @@ async def create_upload_file(file: UploadFile):
         # Записываем контент файла асинхронно
         await f.write(content)
 
-    model = YOLO('model/best.pt')
-    titlePredict = ['Adhesive-residue', 'Adhesive-residue-with-sticker', 'Damaged screen', 'Scratch', 'button-is-missing']
+    model = YOLO('model/v1.pt')
+    titlePredictV1 = ['Adhesive-residue', 'Adhesive-residue-with-sticker', 'Damaged screen', 'Scratch', 'button-is-missing']
+    titlePredictV2 = ['broken_button', 'broken_pixel', 'chip', 'disassembled_laptop', 'lock', 'missing_button', 'missing_screw', 'scratch']
 
     results = model.predict(pathImage, imgsz=640, conf=0.25, iou=0.45)
     json_result: list[dict] = list()
@@ -38,7 +39,7 @@ async def create_upload_file(file: UploadFile):
     for result in results:
         for data in result.boxes.data:
             cords = (int(data[0].item()), int(data[1].item()), int(data[2].item()), int(data[3].item()))
-            info = titlePredict[int(data[5].item())]
+            info = titlePredictV2[int(data[5].item())]
             score = data[4].item()
             json_data = dict()
             json_data["cords"] = cords
