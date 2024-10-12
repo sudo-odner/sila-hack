@@ -9,6 +9,7 @@ class LaptopRepository:
     laptopNeuroDataSource = LaptopNeuroDataSource()
     laptopDatabaseDataSource = LaptopDatabaseDataSource()
 
+
     def uploadLaptopImage(self, image):
         generatedId = str(uuid.uuid4())
         self.laptopMediaDataSource.saveImage(id=generatedId, file=image, callback=self.saveImageCallback)
@@ -19,3 +20,7 @@ class LaptopRepository:
 
     def saveImageCallback(self, generatedId):
         self.laptopNeuroDataSource.sendLaptop(generatedId, self.saveLaptopDataCallback)
+
+
+    def fetchLaptopData(self, id):
+        return self.laptopDatabaseDataSource.getLaptopData(id)

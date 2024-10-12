@@ -19,3 +19,8 @@ if not os.path.exists(UPLOAD_DIRECTORY):
 async def upload_image(file: UploadFile):
     preparedFile = await file.read()
     laptopRepository.uploadLaptopImage(preparedFile)
+
+
+@app.post("/get-laptop-info")
+async def getLaptopInfo(id:str):
+    return laptopRepository.fetchLaptopData(id)
