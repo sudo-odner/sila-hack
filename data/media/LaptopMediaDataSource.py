@@ -9,7 +9,6 @@ class LaptopMediaDataSource:
 
      def cropImage(self, cropParams, id, outId):
          image = Image.open(f'image_src/{id}.jpg')
-         print(cropParams)
          crop_area = (cropParams[0], cropParams[1], cropParams[2], cropParams[3])
          cropped_image = image.crop(crop_area)
          cropped_image.save(f'out_image/{outId}.jpg')

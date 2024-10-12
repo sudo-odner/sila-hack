@@ -7,8 +7,9 @@ class LaptopNeuroDataSource:
         with open(filePath, 'rb') as file:
             files = {'file': (filePath, file, 'image/jpg')}
             response = requests.post("http://213.173.108.217:17256/ml/upload-image/", files=files)
-            print("@@@@@@@@@@@@@@")
-
+            print("%%%%ssssss%%%%%%%%%")
+            print(response.json()["data"])
+            print("%%%%ssssss%%%%%%%%%")
             callback(
                 id,
                 response.json()["data"],

@@ -1,4 +1,5 @@
 # This is a sample Python script.
+import pypandoc
 import urllib3
 from fastapi import FastAPI, UploadFile
 import os
@@ -6,6 +7,8 @@ from doman.LaptopRepository import LaptopRepository
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 import requests
+from docx2pdf import convert
+
 
 
 # Press ⌃R to execute it or replace it with your code.

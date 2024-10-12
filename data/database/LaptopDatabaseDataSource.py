@@ -8,7 +8,6 @@ class LaptopDatabaseDataSource:
         with open('core/database.txt', 'r') as file:
             fileBytes = file.read()
             dictDatabase = json.loads(fileBytes)
-            print(dictDatabase)
             try:
                 deffects = dictDatabase[laptopId]["deffects"]
                 jsonDeffect = json.dumps(data)
@@ -25,7 +24,6 @@ class LaptopDatabaseDataSource:
                     "title": title,
                     "deffects": deffects
                 }
-            print(dictDatabase)
             with open('core/database.txt', 'w') as outFile:
                 outFile.write(json.dumps(dictDatabase))
                 # def saveLaptopData(self, id, data):
@@ -49,6 +47,5 @@ class LaptopDatabaseDataSource:
             fileBytes = file.read()
             dictDatabase = json.loads(fileBytes)
             laptopDatabase = dictDatabase[id]
-            print(laptopDatabase)
             return laptopDatabase
 

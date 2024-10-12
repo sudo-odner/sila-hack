@@ -33,13 +33,13 @@ class LaptopRepository:
             }, title=title)
 
         self.laptopDatabaseDataSource.saveDeffectData(laptopId = id, data = data, title=title)
-        print(data)
 
     def saveImageCallback(self, generatedId, title):
         self.laptopNeuroDataSource.sendLaptop(generatedId, self.saveLaptopDataCallback, title)
 
     def getDocxFile(self, id):
         laptopJson = self.fetchLaptopData(id)
+
         self.laptopDocsDataSource.createDocx(laptopJson, id)
 
     def fetchLaptopData(self, id):
