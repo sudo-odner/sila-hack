@@ -49,7 +49,7 @@ function CreateView({add_lecture, nav, lectures}) {
 
   return (
     <div className="createViewContainer">
-      {isLoading? <div style={{display: "flex", flexDirection: "row", height: "100vh",alignItems: "center", justifyContent: "space-around"}}>Загружаем лекцию..</div> : [<div className="topBarWrapper">
+      {isLoading? <div style={{display: "flex", flexDirection: "row", height: "100vh",alignItems: "center", justifyContent: "space-around"}}>Загружаем снимок..</div> : [<div className="topBarWrapper">
         <div onClick={()=>{nav('/')}} className="close"><img src={Clear}/></div>
         <div className="addTitle ">Добавить Снимок</div>
         <div className="c"/>

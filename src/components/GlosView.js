@@ -24,7 +24,7 @@ function El({id, title}) {
             reader.readAsDataURL(blob);
             reader.onloadend = function() {
                 // console.log(base64data);
-                setImg(<div  className="lecImgWrapper"><img className="lecImg" src={URL.createObjectURL(blob)} alt=""/></div>)
+                setImg(<div  className="big lecImgWrapper"><img className="lecImg" src={URL.createObjectURL(blob)} alt=""/></div>)
 }
         })
         .catch((err) => console.error(err));

@@ -33,9 +33,21 @@ function LectureElement({id, nav, title, description}) {
                 <rect x="0" y="0" rx="0" ry="0" width="100%" height="100%" />
             </ContentLoader>)
     const [, forceUpdate] = useReducer(x => x + 1, 0);
+    const [descriptionCounts, setDescriptionCounts] = useState()
 
     useEffect(()=>
-    {func();forceUpdate()}, [id])
+    {func();forceUpdate();
+        let counts = {}
+        description.slice(0, -1).forEach(item => {
+            item = JSON.parse(item)
+            const description_ = item.description;
+            counts[description_] = (counts[description_] || 0) + 1;
+          });
+          setDescriptionCounts(counts);
+      
+    }, [id])
+
+
 
     return <div onClick={()=>{func();nav('/lecture?id='+id)}} className="lecWrapper" key={id}>
         {img}
@@ -43,7 +55,7 @@ function LectureElement({id, nav, title, description}) {
             <div className="lecTitle">{title}</div>
             <div className="lecShort light-text"></div>
             <div className="lecThemeDate light-text">
-                {/* {theme} · {date} */}{description}
+                {/* {theme} · {date} */}{descriptionCounts? Object.entries(descriptionCounts).map((e)=>(`${e[0]} x${ e[1]}`)): <></>}
             </div>
         </div>
 

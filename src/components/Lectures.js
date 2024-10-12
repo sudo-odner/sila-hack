@@ -23,7 +23,7 @@ function Lectures({lectures, nav}) {
     (val) =>
     { 
       id_++;
-      return <LectureElement id={val.uid} title={val.title}  description={val.description} 
+      return <LectureElement id={val.uid} title={val.title}  description={val.deffects} 
       nav={
         nav} data={val.data}
       />

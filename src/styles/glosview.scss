@@ -58,6 +58,13 @@
     }
     .dictView>* {
         margin-top: 6px;
+        .big {
+            height: auto;
+            width: 50%;
+            img {
+                width: 100%;
+            }
+        }
     }
     .dictView>*:first-child {
         margin-top: 0;
