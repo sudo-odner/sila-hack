@@ -50,4 +50,4 @@ async def create_upload_file(file: UploadFile):
         os.remove(pathImage)
 
     print("End upload-image handler")
-    return {"status": 0, "data": json_result}
+    return {"status": 1, "data": json_result}
