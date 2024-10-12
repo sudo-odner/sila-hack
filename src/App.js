@@ -43,38 +43,61 @@ function App() {
   const [searchParams, setSearchParams] = useSearchParams()
   let id = searchParams.get('id')
 
-  const add_lecture = (uid)=>{
-    console.log(uid)
+  const add_lecture = async (uids) => {
+    console.log(uids)
+    let res = []
+    for (let i = 0; i < uids.length; i++) {
+      // appends stuff to form data to send to python
+      let data = await (await fetch(server_url+`get-laptop-info/?id=${uids[i]}`, {
+        method: 'GET',
 
-    const func_ = () => {fetch(server_url+"get-laptop-info/?id="+uid, {
-      method: 'GET',
+        // 👇 Set headers manually for single file upload
+        headers: {
+          // 'content-type': 'multipart/form-data',
+          'Accept': '*/*',
+          'Access-Control-Allow-Origin': '*',
+        },
+      })).json()
+      Array(data['deffects'].map((v)=>{return JSON.parse(v)}))
+      data = {uid: uids[i], title: data['title'], deffects: data['deffects']}
+      res.push(data)
+      console.log(res)
+    }
+    setLectures(res.concat(lectures))
+  }
+    // uids.forEach(element => {
+    //   console.log(element)
+    // });
+
+    // const func_ = () => {fetch(server_url+"get-laptop-info/?id="+element, {
+    //   method: 'GET',
         
-      // 👇 Set headers manually for single file upload
-      headers: {
-        'content-type': 'application/json',
-        "ngrok-skip-browser-warning": "1",
-        'Access-Control-Allow-Origin': '*',
-        "accept": "*/*"
-      },
-    })
-      .then((res) => {
-        console.log(res);
-        return res.json()
-      })
-      .then((data) => {
-          console.log(data)
-          Array(data['deffects'].map((v)=>{return JSON.parse(v)}))
-          setLectures([...lectures, {uid: uid, title: data['title'], deffects: data['deffects']}])
-        }
+    //   // 👇 Set headers manually for single file upload
+    //   headers: {
+    //     'content-type': 'application/json',
+    //     "ngrok-skip-browser-warning": "1",
+    //     'Access-Control-Allow-Origin': '*',
+    //     "accept": "*/*"
+    //   },
+    // })
+    //   .then((res) => {
+    //     console.log(res);
+    //     return res.json()
+    //   })
+    //   .then((data) => {
+    //       console.log(data)
+    //       Array(data['deffects'].map((v)=>{return JSON.parse(v)}))
+    //       setLectures([...lectures, {uid: uid, title: data['title'], deffects: data['deffects']}])
+    //     }
 
-      )
-      .catch((err) => console.error(err));
+    //   )
+    //   .catch((err) => console.error(err));
+
     
+  
+  // func_()
     
-  }
-  func_()
-    
-  }
+  
   const nav = useNavigate()
 
   const [lectures, setLectures] = useStoredState('lectures', [])

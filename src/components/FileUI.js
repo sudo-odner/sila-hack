@@ -11,20 +11,24 @@ export default function FileUI(
   const [im, setIm] = useState("")
   const onFileChange = (event) => {
     if (event.target.files && event.target.files[0]) {
-      let reader = new FileReader();
-      let f = event.target.files[0];
-      setFileName(f.name);
-      setFileType(f.type.split("/")[0]);
-      if (f.type.split("/")[0] !== "image") {
-        let ext = f.name.split(".").pop() + " file";
-        setFileType(ext);
-      }
-      // reader.onload = function(e) {
-      //   setFileOrig(e.target.result);
-      // };
-      // setFileOrig(f);
-      setIm(URL.createObjectURL(f));
-      setFile(f);
+      // let reader = new FileReader();
+      let array = []
+      console.log( )
+      Array.from(event.target.files).map((f) => {
+        let new_ = {}
+        new_['name'] = f.name
+        new_['type'] = f.type.split("/")
+        if (f.type.split("/")[0] !== "image") {
+          let ext = f.name.split(".").pop() + " file";
+          new_['type'] = ext;
+        }
+        new_["im"] = URL.createObjectURL(f)
+        new_["file"] = f
+        array.push(new_)
+      })
+      console.log(array)
+
+      setFile(array)
     }
   };
 
@@ -36,7 +40,7 @@ export default function FileUI(
         accept='image/*'
         ref={fileRef}
         onChange={onFileChange}
-        multiple={false}
+        multiple={true}
         type="file"
         hidden
       />
@@ -44,6 +48,7 @@ export default function FileUI(
   );
   if (file) {
     let alt = "";
+    let fileType = file[0].type[0]
     if (fileType !== "image") {
       console.log();
       alt = (
@@ -56,7 +61,7 @@ export default function FileUI(
     fileUI = (
       <div className="uploaded">
         {alt === "" ? (
-          <img src={im} alt="error" onClick={() => fileRef.current.click()} />
+          <img src={file[0].im} alt="error" onClick={() => fileRef.current.click()} />
         ) : (
           alt
         )}
@@ -65,11 +70,11 @@ export default function FileUI(
             accept='image/*'
             ref={fileRef}
             onChange={onFileChange}
-            multiple={false}
+            multiple={true}
             type="file"
             hidden
           />
-          <p className="uploadeddesc">Нажмите на изображение для изменения</p>
+          <p className="uploadeddesc">{file.length} imgs loaded</p>
         </div>
       </div>
     );

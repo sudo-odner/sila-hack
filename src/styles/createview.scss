@@ -98,7 +98,8 @@
             display: flex;
             flex-direction: column;
             input {
-                margin-top: 0.5em;
+                margin-top: 0.3em;
+                // margin-bottom: 5px;
                 padding: 1em;
                 font-size: 23px;
                 border-radius: $border-radius-1;
@@ -107,6 +108,7 @@
             }
             input:focus {
                 background: $input-active;
+                // margin: 1px;
             }
             margin-top: 1em;
         }

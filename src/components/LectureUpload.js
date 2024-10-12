@@ -18,7 +18,7 @@ function FileUploadSingle({file, setFile}) {
           <div  className="lecUpBtn"><img src={addIcon}/>Выбрать файл</div>
           {/* <div style={{width:"100%", marginTop: "0.5em", textAlign: "center"}}>Загрузите обложку </div> */}
           <input
-                accept='audio/*'
+                accept='image/*'
             ref={fileRef}
             onChange={handleFileChange}
             multiple={false}
@@ -44,7 +44,7 @@ function FileUploadSingle({file, setFile}) {
               {/* <img src={file} alt="error" onClick={() => fileRef.current.click()} /> */}
               <div  className="lecUpBtn"><img src={addIcon}/>Выбрать файл</div><div className="changebutton">
               <input
-                accept='audio/*'
+                accept='image/*'
                 ref={fileRef}
                 onChange={handleFileChange}
                 multiple={false}
