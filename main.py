@@ -5,6 +5,7 @@ import os
 from doman.LaptopRepository import LaptopRepository
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
+from docx2pdf import convert
 
 
 
@@ -54,3 +55,8 @@ async def getDeffetPhoto(id:str):
 
 
 
+@app.get("/backend/getPdf")
+async def getPdf(id:str):
+    laptopRepository.getDocxFile(id)
+    convert(f"docx_output/{id}.docx", f"docx_output/{id}.pdf")
+    return FileResponse(f"docx_output/{id}.pdf", media_type="application/pdf", filename=f"docx_output/{id}.pdf")
