@@ -47,16 +47,12 @@ async def getDocs(id: str):
     laptopRepository.getDocxFile(id)
     return FileResponse(f"docx_output/{id}.docx", media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document", filename=f"{id}.docx")
 
-
 @app.get("/backend/deffect_photo")
 async def getDeffetPhoto(id:str):
     return FileResponse(f"out_image/{id}.jpg", media_type="image/png", filename=f"{id}.jpg")
 
-
-
-
 @app.get("/backend/getPdf")
 async def getPdf(id:str):
-    laptopRepository.getDocxFile(id)
-    convert(f"docx_output/{id}.docx", f"docx_output/{id}.pdf")
-    return FileResponse(f"docx_output/{id}.pdf", media_type="application/pdf", filename=f"docx_output/{id}.pdf")
+    laptopRepository.getPdfFile(id)
+
+    return FileResponse(f"pdf_output/{id}.pdf", media_type="application/pdf", filename=f"pdf_output/{id}.pdf")

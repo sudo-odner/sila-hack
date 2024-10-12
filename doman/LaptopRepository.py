@@ -46,5 +46,8 @@ class LaptopRepository:
         return self.laptopDatabaseDataSource.getLaptopData(id)
 
 
+    def getPdfFile(self, id):
+        laptopJson = self.fetchLaptopData(id)
 
+        self.laptopDocsDataSource.createPdf(laptopJson, id)
 

@@ -10,6 +10,9 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image
 
+import subprocess
+import os
+
 
 class LaptopDocsDataSource:
 
@@ -39,4 +42,15 @@ class LaptopDocsDataSource:
         doc.save(f'docx_output/{id}.docx')
 
 
-
+    def createPdf(self, data, id):
+        self.createDocx(data, id)
+        output_dir = f'pdf_output/'
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+    
+        command = ['libreoffice', '--headless', '--convert-to', 'pdf', '--outdir', output_dir, f'docx_output/{id}.docx']
+        try:
+            subprocess.run(command, check=True)
+            print(f"Conversion successful! PDF saved to {output_dir}")
+        except subprocess.CalledProcessError as e:
+            print(f"Error during conversion: {e}")
