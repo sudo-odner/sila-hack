@@ -15,7 +15,6 @@ class LaptopDocsDataSource:
         doc.add_paragraph('12.02.2005')
 
         doc.add_heading(f"Описание", level=2)
-        print(data["deffects"])
         doc.add_paragraph(f'Дефекты: {len(data["deffects"])-1}')
         for i in range(len(data["deffects"])-1):
             doc.add_heading(f"Дефект{i+1}: Описание", level=3)

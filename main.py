@@ -1,5 +1,4 @@
 # This is a sample Python script.
-import pypandoc
 import urllib3
 from fastapi import FastAPI, UploadFile
 import os
@@ -7,7 +6,7 @@ from doman.LaptopRepository import LaptopRepository
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 import requests
-from docx2pdf import convert
+import aspose.words as aw
 
 
 
@@ -53,3 +52,13 @@ async def getDocs(id: str):
 @app.get("/backend/deffect_photo")
 async def getDeffetPhoto(id:str):
     return FileResponse(f"out_image/{id}.jpg", media_type="image/png", filename=f"{id}.jpg")
+
+
+@app.get("/backend/getPdf")
+async def getDeffetPhoto(id:str):
+    laptopRepository.getDocxFile(id)
+
+    doc = aw.Document(f"docx_output/{id}.docx")
+    doc.save(f"docx_output/{id}.pdf")
+
+    return FileResponse(f"docx_output/{id}.docx", media_type="application/pdf", filename=f"docx_output/{id}.pdf")

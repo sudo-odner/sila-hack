@@ -1,7 +1,9 @@
 absl-py==1.4.0
 altgraph==0.17.3
 anyio @ file:///home/conda/feedstock_root/build_artifacts/anyio_1688651106312/work/dist
+appscript==1.2.5
 asgiref @ file:///home/conda/feedstock_root/build_artifacts/asgiref_1671589829431/work
+aspose-words==24.10.0
 astunparse==1.6.3
 boltons @ file:///home/conda/feedstock_root/build_artifacts/boltons_1677499911949/work
 brotlipy @ file:///Users/runner/miniforge3/conda-bld/brotlipy_1666764961872/work
@@ -24,6 +26,7 @@ distro==1.8.0
 Django @ file:///home/conda/feedstock_root/build_artifacts/django_1683130392307/work
 django-cors-headers==4.0.0
 djangorestframework @ file:///home/conda/feedstock_root/build_artifacts/djangorestframework_1663854154474/work
+docx2pdf==0.1.8
 exceptiongroup @ file:///home/conda/feedstock_root/build_artifacts/exceptiongroup_1692026125334/work
 fastapi @ file:///home/conda/feedstock_root/build_artifacts/fastapi_1692014902720/work
 filelock==3.12.0
@@ -74,6 +77,7 @@ pydantic @ file:///Users/runner/miniforge3/conda-bld/pydantic_1690476298755/work
 pyinstaller==5.11.0
 pyinstaller-hooks-contrib==2023.3
 pyOpenSSL @ file:///home/conda/feedstock_root/build_artifacts/pyopenssl_1672659226110/work
+pypandoc==1.14
 pyparsing==3.0.9
 PySocks @ file:///home/conda/feedstock_root/build_artifacts/pysocks_1661604839144/work
 python-dateutil==2.8.2
