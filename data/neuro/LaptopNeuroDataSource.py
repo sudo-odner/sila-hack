@@ -9,7 +9,16 @@ class LaptopNeuroDataSource:
           #  response = requests.post("http://127.0.0.1:8000", files=files)
             callback(
                 id,
-                {
-                "title": "First title",
-                "description": "description"
-            })
+                [
+                    {
+                        "cords":(10, 10, 40, 40),
+                        "description":"sdfsdfsdfdsf",
+                        "score":"12"
+                    },
+                    {
+                        "cords": (10, 10, 40, 40),
+                        "description": "sdfsdfsdfdsf",
+                        "score": "12"
+                    },
+                ]
+            )
