@@ -7,6 +7,8 @@ from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 import requests
 import aspose.words as aw
+import subprocess
+from docx2pdf import convert
 
 
 
@@ -54,11 +56,15 @@ async def getDeffetPhoto(id:str):
     return FileResponse(f"out_image/{id}.jpg", media_type="image/png", filename=f"{id}.jpg")
 
 
+
 @app.get("/backend/getPdf")
-async def getDeffetPhoto(id:str):
+async def getPdf(id:str):
     laptopRepository.getDocxFile(id)
 
-    doc = aw.Document(f"docx_output/{id}.docx")
-    doc.save(f"docx_output/{id}.pdf")
+    convert(f"docx_output/{id}.docx", f"docx_output/{id}.pdf")
 
-    return FileResponse(f"docx_output/{id}.docx", media_type="application/pdf", filename=f"docx_output/{id}.pdf")
+    return FileResponse(f"docx_output/{id}.pdf", media_type="application/pdf", filename=f"docx_output/{id}.pdf")
+
+def convert_docx_to_pdf(docx_path, output_dir="."):
+    # Вызов LibreOffice для конвертации
+    subprocess.run(['libreoffice', '--headless', '--convert-to', 'pdf', docx_path, '--outdir', output_dir])
