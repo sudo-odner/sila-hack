@@ -13,10 +13,10 @@ class LaptopRepository:
 
     def uploadLaptopImage(self, image, title):
         generatedId = str(uuid.uuid4()).replace("-","")
-        self.laptopMediaDataSource.saveImage(id=title, file=image, callback=self.saveImageCallback)
-        return title
+        self.laptopMediaDataSource.saveImage(id=generatedId, file=image, callback=self.saveImageCallback, title=title)
+        return generatedId
 
-    def saveLaptopDataCallback(self, id, data):
+    def saveLaptopDataCallback(self, id, data, title):
 
         diffects = data
         for i in range(len(diffects)):
@@ -30,13 +30,13 @@ class LaptopRepository:
             self.laptopDatabaseDataSource.saveDeffectData(id, {
                 "id":defId,
                 "description":preparedData["description"]
-            })
+            }, title=title)
 
-        self.laptopDatabaseDataSource.saveDeffectData(laptopId = id, data = data)
+        self.laptopDatabaseDataSource.saveDeffectData(laptopId = id, data = data, title=title)
         print(data)
 
-    def saveImageCallback(self, generatedId):
-        self.laptopNeuroDataSource.sendLaptop(generatedId, self.saveLaptopDataCallback)
+    def saveImageCallback(self, generatedId, title):
+        self.laptopNeuroDataSource.sendLaptop(generatedId, self.saveLaptopDataCallback, title)
 
     def getDocxFile(self, id):
         laptopJson = self.fetchLaptopData(id)

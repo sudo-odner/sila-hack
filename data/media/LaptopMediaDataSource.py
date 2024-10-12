@@ -1,11 +1,11 @@
 from PIL import Image
 
 class LaptopMediaDataSource:
-     def saveImage(self, id, file, callback):
+     def saveImage(self, id, file, callback, title):
         file_location = f"image_src/{id}.jpg"
         with open(file_location, "wb") as f:
           f.write(file)
-          callback(id)
+          callback(id, title)
 
      def cropImage(self, cropParams, id, outId):
          image = Image.open(f'image_src/{id}.jpg')
