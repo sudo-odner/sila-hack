@@ -1,11 +1,11 @@
 {
-    "short_name": "Putoshka Assistent",
-    "name": "Putoshka Assistent App",
+    "short_name": "Сканер силы",
+    "name": "Определение дефектов на ноутбуках",
     "icons": [{
 
-        "src": "logo.jpeg",
-        "type": "image/jpeg",
-        "sizes": "1024x1024"
+        "src": "logo.png",
+        "type": "image/png",
+        "sizes": "490 × 73"
     }],
     "start_url": ".",
     "display": "standalone",

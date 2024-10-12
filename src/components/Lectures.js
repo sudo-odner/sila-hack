@@ -19,7 +19,7 @@ function Lectures({lectures, nav}) {
   let themes = [...new Set(lectures.map((value)=>value.theme))]
   const [chosenF, setChosenF] = useState(FIOs)
   const [chosenT, setChosenT] = useState(themes)
-  const lecView = lectures.filter((e)=>chosenF.includes(e.FIO) && chosenT.includes(e.theme)).map(
+  const lecView = lectures.filter((e)=>chosenF.includes(e.FIO) && chosenT.includes(e.theme) && (e.title.includes(searchProp) || !searchProp)).map(
     (val) =>
     { 
       id_++;

@@ -4,7 +4,7 @@ import "../styles/header.scss"
 
 function Header() {
     return <div className="header">
-        <div className="title head">СИЛА | Putoshka</div>
+        <div className="title head"><img src="logo.png"/></div>
     </div>
 }
 

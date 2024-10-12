@@ -1,5 +1,12 @@
+@import "./variables.scss";
 .header {
     .title {
         font-weight: 300;
+        font-size: 54px;
+        color: $bright;
+        img {
+            height: 40px;
+        }
     }
+    height: 40px;
 }
