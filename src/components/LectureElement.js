@@ -4,7 +4,7 @@ import "../styles/lecture.scss"
 import ContentLoader from "react-content-loader";
 
 
-function LectureElement({id, nav, title, description}) {
+function LectureElement({id, nav, title, description, removeList}) {
     const func = ()=>{fetch(site_url+"get_image/?id="+id, {
         method: 'GET',
           
@@ -39,9 +39,10 @@ function LectureElement({id, nav, title, description}) {
     {func();forceUpdate();
         let counts = {}
         description.slice(0, -1).forEach(item => {
+            if (!removeList.includes(item.id)){
             item = JSON.parse(item)
             const description_ = item.description;
-            counts[description_] = (counts[description_] || 0) + 1;
+            counts[description_] = (counts[description_] || 0) + 1;}
           });
           setDescriptionCounts(counts);
       

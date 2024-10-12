@@ -6,7 +6,9 @@ import site_url from "../site"
 import ContentLoader from "react-content-loader";
 
 
-function El({id, title}) {
+function El({id, title, remove}) {
+
+
     const func = ()=>{fetch(site_url+"deffect_photo/?id="+id, {
         method: 'GET',
           
@@ -47,32 +49,36 @@ function El({id, title}) {
             {/* <div className="lecThemeDate light-text">
                 {/* {theme} · {date}{description} 
             </div> */}
+            <div className="lecActions">
+            {/* <div className="lecKeep">Оставить</div> */}
+            <div className="lecError" onClick={()=>{remove(id)}}>Ошибка</div>
+        </div>
         </div>
 
-        {/* <div className="lecActions">
-            <div className="lecLike"></div>
-            <div className="lecShort light-text">{short_desc}</div>
-            <div className="lecThemeDate light-text">
-                {theme} · {date}
-            </div>
-        </div> */}
+        
     </div>
 }
 
 
-function GlosView({lectures, nav}){
+function GlosView({lectures, nav, removeList, setRemoveList}){
+
+    function remove(id_) {
+        console.log(removeList)
+        setRemoveList([...removeList, id_])
+    }
 
     const {id} = useParams();
     let lecture = lectures.filter(lec=>{console.log(lec.uid, id);return lec.uid === id})[0]
     console.log(lecture, id)
     const [chosen_id, setId] = useState(-1);
     const deffects = lecture.deffects.slice(0, -1).map((e)=>JSON.parse(e))
+    // const [removeList, setRemoveList] = useState([])
     console.log(deffects)
 
     let view = deffects.map((v, key) => {
-        if ((chosen_id === -1) || (key === Number(chosen_id))) {
+        if (((chosen_id === -1) || (key === Number(chosen_id))) && (!removeList.includes(v.id))) {
             console.log(v)
-            return <El id={v.id} title={v.description}/>
+            return <El id={v.id} title={v.description} remove={remove}/>
             
         } else {
             return <></>

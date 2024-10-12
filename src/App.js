@@ -78,12 +78,13 @@ function App() {
   const nav = useNavigate()
 
   const [lectures, setLectures] = useStoredState('lectures', [])
+  const [removeList, setRemoveList] = useStoredState('removelist', [])
 
   return (
     <div className="App">
       <div className={'left '+(window.location.pathname==="/" ?'aaal':'')}>
         <Header/>
-        <Lectures nav={nav} lectures={lectures}/>
+        <Lectures nav={nav} lectures={lectures} removeList={removeList}/>
       </div>
       <div className={'right '+(window.location.pathname==="/" ?'aaar':'')}>
           <Routes>
@@ -91,7 +92,7 @@ function App() {
             <Route path="/add" element={<CreateView nav={nav} lectures={lectures} add_lecture={add_lecture}/>} />
             <Route path="/lecture/" element={<LectureView setLectures={setLectures} lectures={lectures} nav={nav} id={id}/>} />
             <Route path="/edit_lecture/:id" element={<EditLectureView setLectures = {setLectures} lectures={lectures} nav={nav}/>} />
-            <Route path="/glos/:id" element={<GlosView lectures={lectures} nav={nav}/>} />
+            <Route path="/glos/:id" element={<GlosView lectures={lectures} removeList={removeList} setRemoveList={setRemoveList} nav={nav}/>} />
           </Routes>
       </div>
       {/* <GlosView/> */}

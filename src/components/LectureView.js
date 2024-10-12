@@ -64,13 +64,15 @@ function LectureView({lectures, nav, id, setLectures}) {
       <div className="container">
         <div className="imgWrapper" >{img_}</div>
         <div className="upinfo">
-            <div className="up">{JSON.stringify(lecture.title)}<img className="c" onClick={()=>{
+            <div className="up">{JSON.stringify(lecture.title)}
+              </div>
+              {/* <img className="c" onClick={()=>{
               lecture.featured = !lecture.featured;
               let y = lectures;
               y[id] = lecture; 
               setLectures(y);
 
-            }} src={lecture.featured ? Heart : HeartFill} alt=""/></div>
+            }} src={lecture.featured ? Heart : HeartFill} alt=""/></div> */}
             <div>
             <a download={lecture.title+".docx"}href={site_url+"get_docs?id="+lecture.uid} className="button document">DOCX</a>
             <a download={lecture.title+".pdf"}href={site_url+"getPdf?id="+lecture.uid} className="button document">PDF</a>

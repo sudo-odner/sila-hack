@@ -1,72 +1,101 @@
-@import "./variables.scss";
-.container {
-    // max-width: 40em;
-    width: 100%;
-    .topBarWrapper {
-        display: flex;
+    @import "./variables.scss";
+    .container {
+        // max-width: 40em;
         width: 100%;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 20px;
-        .addTitle {
-            font-weight: 500;
-            font-size: 30px;
+        .topBarWrapper {
             display: flex;
+            width: 100%;
             flex-direction: row;
             align-items: center;
-            // flex: 2;
-            // min-width: 330px
-        }
-        .close {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            cursor: pointer;
-            img {
+            justify-content: space-between;
+            margin-bottom: 20px;
+            .addTitle {
+                font-weight: 500;
+                font-size: 30px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                // flex: 2;
+                // min-width: 330px
+            }
+            .close {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                cursor: pointer;
+                img {
+                    height: 24px;
+                }
+            }
+            .spacer {
+                width: 24px;
                 height: 24px;
             }
         }
-        .spacer {
-            width: 24px;
-            height: 24px;
+        .dictView {
+            display: flex;
+            flex-direction: column;
+            .glos {
+                cursor: pointer;
+                padding: 1em;
+                border-radius: $border-radius-1;
+                background: $white;
+                .termin {
+                    display: flex;
+                    flex-direction: column;
+                }
+                .termin>:first-child {
+                    // font-weight: 600;
+                }
+                .termin>:last-child {
+                    margin-top: 1em;
+                    font-size: 20px;
+                }
+                .t {
+                    font-size: 30px;
+                }
+            }
         }
-    }
-    .dictView {
-        display: flex;
-        flex-direction: column;
-        .glos {
-            cursor: pointer;
-            padding: 1em;
-            border-radius: $border-radius-1;
-            background: $white;
-            .termin {
+        .dictView>* {
+            margin-top: 6px;
+            .big {
+                height: auto;
+                width: 50%;
                 display: flex;
                 flex-direction: column;
+                img {
+                    width: 100%;
+                }
             }
-            .termin>:first-child {
-                // font-weight: 600;
-            }
-            .termin>:last-child {
-                margin-top: 1em;
-                font-size: 20px;
-            }
-            .t {
-                font-size: 30px;
-            }
-        }
-    }
-    .dictView>* {
-        margin-top: 6px;
-        .big {
-            height: auto;
-            width: 50%;
-            img {
+            .lecDesc {
                 width: 100%;
+                .lecActions {
+                    display: flex;
+                    flex-direction: row;
+                    // @media (max-width: 500px) {
+                    //     flex-direction: column;
+                    // }
+                    justify-content: space-between;
+                    width: 100%;
+                    user-select: none;
+                    .lecError {
+                        padding: 0.3em 1em;
+                        border-radius: $border-radius-2;
+                        background: $red;
+                        color: white;
+                        margin: 0.5em;
+                    }
+                    .lecKeep {
+                        background: $bright;
+                        border-radius: $border-radius-2;
+                        color: white;
+                        padding: 0.3em 1em;
+                        margin: 0.5em;
+                    }
+                }
             }
         }
+        .dictView>*:first-child {
+            margin-top: 0;
+        }
     }
-    .dictView>*:first-child {
-        margin-top: 0;
-    }
-}

@@ -8,7 +8,7 @@ import server_url from "../site"
 
 import "../styles/lectures.scss"
 
-function Lectures({lectures, nav}) {
+function Lectures({lectures, nav, removeList}) {
 
   const [settings, setSettings] = useState(false);
   const [searchProp, setSearchProp] = useState('')
@@ -23,7 +23,7 @@ function Lectures({lectures, nav}) {
     (val) =>
     { 
       id_++;
-      return <LectureElement id={val.uid} title={val.title}  description={val.deffects} 
+      return <LectureElement removeList={removeList} id={val.uid} title={val.title}  description={val.deffects} 
       nav={
         nav} data={val.data}
       />
