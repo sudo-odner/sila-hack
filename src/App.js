@@ -9,7 +9,6 @@ import LectureView from './components/LectureView';
 import GlosView from './components/GlosView';
 import EditLectureView from "./components/EditLectureView"
 import server_url from "./site"
-
 import { useNavigate } from 'react-router';
 
 function useStoredState(key, defaultValue) {
@@ -65,42 +64,11 @@ function App() {
     }
     setLectures(res.concat(lectures))
   }
-    // uids.forEach(element => {
-    //   console.log(element)
-    // });
-
-    // const func_ = () => {fetch(server_url+"get-laptop-info/?id="+element, {
-    //   method: 'GET',
-        
-    //   // 👇 Set headers manually for single file upload
-    //   headers: {
-    //     'content-type': 'application/json',
-    //     "ngrok-skip-browser-warning": "1",
-    //     'Access-Control-Allow-Origin': '*',
-    //     "accept": "*/*"
-    //   },
-    // })
-    //   .then((res) => {
-    //     console.log(res);
-    //     return res.json()
-    //   })
-    //   .then((data) => {
-    //       console.log(data)
-    //       Array(data['deffects'].map((v)=>{return JSON.parse(v)}))
-    //       setLectures([...lectures, {uid: uid, title: data['title'], deffects: data['deffects']}])
-    //     }
-
-    //   )
-    //   .catch((err) => console.error(err));
-
-    
-  
-  // func_()
-    
   
   const nav = useNavigate()
 
-  const [lectures, setLectures] = useStoredState('lectures', [])
+  const [lectures, setLectures] = useStoredState('lectures', [{"uid":"276d0d219c2e45ee904d5fa4ef638c49","title":"HP 1023","deffects":["{\"id\": \"158aee387e004020a932ab68988c320c\", \"description\": \"disassembled_laptop\"}","{\"id\": \"043c31a36f5547c3a985b44477e15a7d\", \"description\": \"disassembled_laptop\"}","[{\"cords\": [213, 331, 333, 558], \"description\": \"disassembled_laptop\", \"score\": 0.8291016221046448}, {\"cords\": [523, 712, 681, 765], \"description\": \"disassembled_laptop\", \"score\": 0.7168760299682617}]"]}]
+  )
   const [removeList, setRemoveList] = useStoredState('removelist', [])
 
   return (

@@ -45,9 +45,9 @@ function Lectures({lectures, nav, removeList}) {
         <img src={Settings} className="c" alt="" onClick={()=>{setSettings(!settings)}}/>
         <img src={Clear} className="c" onClick={()=>{setSearchProp('')}} alt=""/>
       </div>
-      {settings ? <div className="filters">
+      {/*{/*<div className="filters">
         <div className="fios">
-          <div className="title">Авторы</div>
+           <div className="title">Авторы</div>
           <div className="list">
           {FIOs.map((v, i)=>{return <div className="el">
               
@@ -76,8 +76,8 @@ function Lectures({lectures, nav, removeList}) {
             </div>})}
           </div>
         </div>
-      </div>: ""}
-      </div>
+      </div> :""}
+       */} </div>
       <div onClick={()=>nav("/add")} className="loadButtonWrapper button">
         <img src={addIcon}/>
         Добавить
