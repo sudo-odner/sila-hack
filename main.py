@@ -5,6 +5,7 @@ import os
 from doman.LaptopRepository import LaptopRepository
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
+import requests
 
 
 # Press ⌃R to execute it or replace it with your code.

@@ -40,8 +40,7 @@ class LaptopRepository:
 
     def getDocxFile(self, id):
         laptopJson = self.fetchLaptopData(id)
-        preparedItem = json.loads(laptopJson)
-        self.laptopDocsDataSource.createDocx(preparedItem, id)
+        self.laptopDocsDataSource.createDocx(laptopJson, id)
 
     def fetchLaptopData(self, id):
         return self.laptopDatabaseDataSource.getLaptopData(id)

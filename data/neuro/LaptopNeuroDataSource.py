@@ -1,4 +1,4 @@
-
+import requests
 
 class LaptopNeuroDataSource:
 
@@ -6,20 +6,11 @@ class LaptopNeuroDataSource:
         filePath = f"image_src/{id}.jpg"
         with open(filePath, 'rb') as file:
             files = {'file': (filePath, file, 'image/jpg')}
-          #  response = requests.post("http://127.0.0.1:8000", files=files)
+            response = requests.post("http://213.173.108.217:17256/ml/upload-image/", files=files)
+            print("@@@@@@@@@@@@@@")
+
             callback(
                 id,
-                [
-                    {
-                        "cords":(10, 10, 40, 40),
-                        "description":"sdfsdfsdfdsf",
-                        "score":"12"
-                    },
-                    {
-                        "cords": (10, 10, 40, 40),
-                        "description": "sdfsdfsdfdsf",
-                        "score": "12"
-                    },
-                ],
+                response.json()["data"],
                 title
             )
