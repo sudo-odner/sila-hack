@@ -9,7 +9,7 @@ import requests
 import aspose.words as aw
 import subprocess
 from docx2pdf import convert
-
+import pypandoc
 
 
 # Press ⌃R to execute it or replace it with your code.
@@ -61,7 +61,8 @@ async def getDeffetPhoto(id:str):
 async def getPdf(id:str):
     laptopRepository.getDocxFile(id)
 
-    convert(f"docx_output/{id}.docx", f"docx_output/{id}.pdf")
+    output = pypandoc.convert_file(f"docx_output/{id}.docx", 'pdf', outputfile=f"docx_output/{id}.pdf")
+
 
     return FileResponse(f"docx_output/{id}.pdf", media_type="application/pdf", filename=f"docx_output/{id}.pdf")
 

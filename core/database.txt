@@ -1,1 +1,1 @@
-{}
+{"301247d2a4b345988123c6e31ab84c46": {"title": "dfdfvdfvdfv", "deffects": ["{\"id\": \"e162c82640774195b229b1ecbe6f001c\", \"description\": \"disassembled_laptop\"}", "{\"id\": \"795462574e824b31911b361de603356e\", \"description\": \"disassembled_laptop\"}", "[{\"cords\": [213, 331, 333, 558], \"description\": \"disassembled_laptop\", \"score\": 0.8291016221046448}, {\"cords\": [523, 712, 681, 765], \"description\": \"disassembled_laptop\", \"score\": 0.7168760299682617}]"]}}
