@@ -7,7 +7,7 @@ from fastapi import FastAPI, File, UploadFile
 app = FastAPI()
 
 
-@app.post("/upload-image/")
+@app.post("/ml/upload-image/")
 async def create_upload_file(file: UploadFile):
     # Логируем начало загрузки видео
     print("Start upload-image handler")
