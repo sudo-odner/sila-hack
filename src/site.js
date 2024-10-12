@@ -1,1 +1,1 @@
-export default "https://51a2-77-234-210-6.ngrok-free.app/backend/";
+export default "http://213.173.108.217:17257/backend/";

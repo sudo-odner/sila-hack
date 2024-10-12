@@ -55,7 +55,7 @@ function LectureView({lectures, nav, id, setLectures}) {
     <div className="lectureViewContainer">
       <div className="topBarWrapper">
         <div onClick={()=>{nav(`/`)}} className="close c"><img src={Clear}/></div>
-        <div className="addTitle ">{lecture.title}</div>
+        {/* <div className="addTitle ">{lecture.title}</div> */}
         <div className="edit c" onClick={()=>{nav(`/edit_lecture/${id}`)}}>
           <img src={Edit}/>
         </div>
@@ -64,7 +64,7 @@ function LectureView({lectures, nav, id, setLectures}) {
       <div className="container">
         <div className="imgWrapper" >{img_}</div>
         <div className="upinfo">
-            <div className="up">{JSON.stringify(lecture.deffects)}<img className="c" onClick={()=>{
+            <div className="up">{JSON.stringify(lecture.title)}<img className="c" onClick={()=>{
               lecture.featured = !lecture.featured;
               let y = lectures;
               y[id] = lecture; 
@@ -99,9 +99,7 @@ function LectureView({lectures, nav, id, setLectures}) {
                 nav(`/`)
                 forceUpdate()}}className="remove button">Удалить</div>
      </div>
-        
-        
-       </div>
+     </div>
   );
 }
 

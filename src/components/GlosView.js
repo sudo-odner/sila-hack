@@ -1,36 +1,79 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useReducer} from "react";
 import { useParams } from "react-router-dom";
 import Clear from "../icons/CloseBig.svg"
 import "../styles/glosview.scss"
-import ReactPlayer from "react-player";
-import useObjectURL from "use-object-url";
 import site_url from "../site"
+import ContentLoader from "react-content-loader";
+
+
+function El({id, title}) {
+    const func = ()=>{fetch(site_url+"deffect_photo/?id="+id, {
+        method: 'GET',
+          
+        // 👇 Set headers manually for single file upload
+        headers: {
+          // 'content-type': 'multipart/form-data',
+          'Accept': 'image/png',
+          "ngrok-skip-browser-warning": "1",
+          'Access-Control-Allow-Origin': '*',
+        },
+      })
+        .then((res) => {console.log(res);return res.blob()})
+        .then((blob) => {console.log(blob);
+            var reader = new FileReader();
+            reader.readAsDataURL(blob);
+            reader.onloadend = function() {
+                // console.log(base64data);
+                setImg(<div  className="lecImgWrapper"><img className="lecImg" src={URL.createObjectURL(blob)} alt=""/></div>)
+}
+        })
+        .catch((err) => console.error(err));
+    }
+    const [img, setImg] = useState(<ContentLoader speed={2}
+        backgroundColor="#f3f3f3"
+        foregroundColor="#ecebeb" className="lecImgWrapper"> 
+                <rect x="0" y="0" rx="0" ry="0" width="100%" height="100%" />
+            </ContentLoader>)
+    const [, forceUpdate] = useReducer(x => x + 1, 0);
+
+    useEffect(()=>
+    {func();forceUpdate()}, [id])
+
+    return <div className="lecWrapper" key={id}>
+        {img}
+        <div className="lecDesc">
+            {/* <div className="lecTitle"></div> */}
+            <div className="lecShort light-text">{title}</div>
+            {/* <div className="lecThemeDate light-text">
+                {/* {theme} · {date}{description} 
+            </div> */}
+        </div>
+
+        {/* <div className="lecActions">
+            <div className="lecLike"></div>
+            <div className="lecShort light-text">{short_desc}</div>
+            <div className="lecThemeDate light-text">
+                {theme} · {date}
+            </div>
+        </div> */}
+    </div>
+}
 
 
 function GlosView({lectures, nav}){
 
     const {id} = useParams();
-    let lecture = lectures[id]
+    let lecture = lectures.filter(lec=>{console.log(lec.uid, id);return lec.uid === id})[0]
     console.log(lecture, id)
     const [chosen_id, setId] = useState(-1);
-    console.log(lecture.data.terms)
-    
+    const deffects = lecture.deffects.slice(0, -1).map((e)=>JSON.parse(e))
+    console.log(deffects)
 
-    let view = lecture.data.terms.map((v, key) => {
+    let view = deffects.map((v, key) => {
         if ((chosen_id === -1) || (key === Number(chosen_id))) {
             console.log(v)
-            return <div className="glos" key={key} onClick={(e)=>{setId(key);}}>{(chosen_id === -1) ? 
-
-            <div className="capitalize t">{v[0]}</div> :
-
-             ((chosen_id === key) ?
-              <div className="termin">
-                <div className="capitalize t">
-                    {v[0]}
-                </div> 
-                <div>· {v[1].toLowerCase()}</div>
-              </div> : "")}
-            </div>
+            return <El id={v.id} title={v.description}/>
+            
         } else {
             return <></>
         }

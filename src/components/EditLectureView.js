@@ -12,15 +12,12 @@ import { useParams } from "react-router-dom";
 
 function LectureView({setLectures, lectures, nav}) {
   let {id} = useParams();
-  let lecture = lectures[id]
+  let lecture = lectures.filter(lec=>{console.log(lec.uid, id);return lec.uid === id})[0]
   const [isG, setG] = useState(false)
   const [, forceUpdate] = useReducer(x => x + 1, 0);
   console.log(lecture, id)
   const [img_, setImg] = useState(<img alt="" src={""}/>)
-  const [title, setTitle] = useState(lectures[id].title)
-  const [FIO, setFIO] = useState(lectures[id].FIO)
-  const [theme, setTheme] = useState(lectures[id].theme)
-  const [short, setShort] = useState(lectures[id].data.short_descr)
+  const [title, setTitle] = useState(lecture.title)
   useEffect(()=>
     {
         if (id >= lectures.length || id < 0) {
@@ -28,7 +25,7 @@ function LectureView({setLectures, lectures, nav}) {
             return
         }
         if (!isG) {
-            fetch(site_url+"get_image/?id="+lecture.data.id, {
+            fetch(site_url+"get_image/?id="+lecture.uid, {
                 method: 'GET',
                 headers: {
                     'Accept': 'image/png',
@@ -51,31 +48,31 @@ function LectureView({setLectures, lectures, nav}) {
 }
 
   
-  return (
-    <div className="lectureViewContainer">
+  return (<div className="lectureViewContainer">
       <div className="topBarWrapper">
         <div onClick={()=>{nav(`/lecture?id=${id}`)}} className="close c"><img src={Clear}/></div>
-        <div className="input-"><input className="addTitle " onChange={(e)=>{setTitle(e.target.value)}} defaultValue={title}/>
-        </div><div className="spacer"/>
-        </div>
+        {/* <div className="input-"><input className="addTitle " onChange={(e)=>{setTitle(e.target.value)}} defaultValue={title}/> */}
+        {/* </div> */}
+        <div className="spacer"/>
+      </div>
       
       <div className="container">
         <div className="imgWrapper" >{img_}</div>
         <div className="upinfo">
             <div className="up">
-                <div className="input-"><div>ФИО</div><input className="fio"   onChange={(e)=>{setFIO(e.target.value)}} defaultValue={FIO}/></div>
-                <div className="input-"><div>Тема</div><input className="theme"  onChange={(e)=>{setTheme(e.target.value)}} defaultValue={theme}/>
+                <div className="input-">
+                  <div>Серийный номер</div>
+                  <input className="fio"   onChange={(e)=>{setTitle(e.target.value)}} defaultValue={title}/>
                 </div>
-                </div>
-            
+                {/* <div className="input-"><div>Тема</div><input className="theme"  onChange={(e)=>{setTheme(e.target.value)}} defaultValue={theme}/> */}
+                
+            </div>
         </div>
-        <textarea  onChange={(e)=>{setShort(e.target.value)}} defaultValue={short}></textarea>
+        {/* <textarea  onChange={(e)=>{setShort(e.target.value)}} defaultValue={short}></textarea> */}
         <div onClick={()=>{
+            
             lecture.title = title
-            lecture.FIO = FIO
-            lecture.theme = theme
-            lecture.data.short_descr = short
-            lectures[id] = lecture
+            lectures[lectures.find((el) => el === lecture)] = lecture
             setLectures(lectures)
             nav(`/lecture/?id=${id}`)}}className="glosWrapper button">Сохранить изменения</div>
             <div onClick={()=>{
@@ -83,9 +80,7 @@ function LectureView({setLectures, lectures, nav}) {
                 nav(`/`)
                 forceUpdate()}}className="remove button">Удалить</div>
      </div>
-        
-        
-       </div>
+     </div>
   );
 }
 
