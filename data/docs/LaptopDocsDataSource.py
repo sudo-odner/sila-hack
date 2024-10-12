@@ -1,8 +1,15 @@
 import json
 
-from PIL import Image
 from docx import Document
 from docx.shared import Inches
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.lib.units import inch
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.pdfgen import canvas
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image
+
 
 class LaptopDocsDataSource:
 
@@ -30,3 +37,6 @@ class LaptopDocsDataSource:
         # Добавляем изображение
 
         doc.save(f'docx_output/{id}.docx')
+
+
+

@@ -5,11 +5,7 @@ import os
 from doman.LaptopRepository import LaptopRepository
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
-import requests
-import aspose.words as aw
-import subprocess
-from docx2pdf import convert
-import pypandoc
+
 
 
 # Press ⌃R to execute it or replace it with your code.
@@ -57,15 +53,4 @@ async def getDeffetPhoto(id:str):
 
 
 
-@app.get("/backend/getPdf")
-async def getPdf(id:str):
-    laptopRepository.getDocxFile(id)
 
-    output = pypandoc.convert_file(f"docx_output/{id}.docx", 'pdf', outputfile=f"docx_output/{id}.pdf")
-
-
-    return FileResponse(f"docx_output/{id}.pdf", media_type="application/pdf", filename=f"docx_output/{id}.pdf")
-
-def convert_docx_to_pdf(docx_path, output_dir="."):
-    # Вызов LibreOffice для конвертации
-    subprocess.run(['libreoffice', '--headless', '--convert-to', 'pdf', docx_path, '--outdir', output_dir])

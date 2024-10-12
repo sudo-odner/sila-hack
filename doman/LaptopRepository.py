@@ -46,3 +46,5 @@ class LaptopRepository:
         return self.laptopDatabaseDataSource.getLaptopData(id)
 
 
+
+
