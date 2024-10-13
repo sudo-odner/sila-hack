@@ -5,6 +5,7 @@ import Settings from "../icons/Settings.svg";
 import Clear from "../icons/CloseBig.svg";
 import LectureElement from "./LectureElement";
 import server_url from "../site";
+import { PongSpinner } from "react-spinners-kit";
 
 import "../styles/createview.scss";
 import FileUI from "./FileUI";
@@ -58,13 +59,20 @@ function CreateView({ add_lecture, nav, lectures }) {
         <div
           style={{
             display: "flex",
-            flexDirection: "row",
             height: "100vh",
             alignItems: "center",
-            justifyContent: "space-around",
+            justifyContent: "center",
           }}
+          className="loading"
         >
-          Загружено {loadCount}/{file.length}
+          <p>Загружено {Math.round((loadCount / file.length) * 100)} %</p>
+          <div className="loadingview">
+                <div
+                    className="loading"
+                >
+                    <PongSpinner color="#C11d1d"/>
+                </div>
+            </div>
         </div>
       ) : (
         [

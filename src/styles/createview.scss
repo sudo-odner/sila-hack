@@ -4,6 +4,10 @@
     width: calc(100% - 2em);
     .createViewContainer {
         width: 100%;
+        .loading {
+            display: flex;
+            flex-direction: column;
+        }
         .topBarWrapper {
             display: flex;
             flex-direction: row;
