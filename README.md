@@ -25,9 +25,13 @@
 ---
 
 # Архитектура
+Основная работа над ветками производилась на разных репозиториях этого проекта
 
 ## Backend (ML)
+[Branch](https://github.com/sudo-odner/sila-hack/tree/ml)
 
 ## Frontend (React)
+[Branch](https://github.com/sudo-odner/sila-hack/tree/backend)
 
 ## Backend (FastAPI)
+[Branch](https://github.com/sudo-odner/sila-hack/tree/react)
