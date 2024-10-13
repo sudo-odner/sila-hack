@@ -33,7 +33,7 @@
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  FileIcon.js \
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Загрузка снимка \
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  FileUI.js \
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Вьюшка деффектов снимка с возможностью пожаловаться на ошибку и отправкой на доработку нейронке \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Вьюшка деффектов снимка с возможностью пожаловаться на ошибку и отправить на доработку нейронке \
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  GlosView.js \
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Шапка сайта \
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  Header.js \
@@ -41,9 +41,9 @@
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  LectureElement.js \
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Боковая панель с снимками и поиском/фильтрами \
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  Lectures.js \
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Загрузка снимка с серийником \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Загрузка снимков с серийным номером \
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  LectureUpload.js \
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Вьюшка загруженного снимка с возможностью удаления, просмотром деффектов и изменения серийного номера \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Вьюшка загруженного снимка с возможностью просмотром деффектов, изменения серийного номера и удаления снимка \
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  LectureView.js \
 &emsp;&emsp;&emsp; // Папка с используемыми шрифтами \
 &emsp;&emsp;&emsp;└──  font  \
