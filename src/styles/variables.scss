@@ -1,3 +1,5 @@
+// переменные приложения для использования в глобальной стилизации
+// цвета 
 $bright:#2C405A;
 $main-bg: #f2f2f2;
 $lec-bg:#fff;
@@ -8,12 +10,15 @@ $black:#000;
 $input-inactive:#EBEBF2;
 $input-active:#fff;
 $red: #C11d1d;
+$input-text-inactive: #797E8C;
+// закругления
 $border-radius-1: 10px;
 $border-radius-2: 12px;
-$input-text-inactive: #797E8C;
+// загрузка шрифта из папки font
 @font-face {
     font-family: "Rutube";
     src: url("../font/RF_RUTUBE_Medium.ttf");
 }
 
+// переменная шрифта
 $rutube: "Rutube";
