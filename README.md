@@ -6,7 +6,7 @@
 **Стек:** YOLOv11, PyTorch, FastAPI, React.
 
 ## [Screencast]()
-## [Website]()
+## [Website](http://213.173.108.217:10991)
 
 ## Команда
   
@@ -19,7 +19,7 @@
   Илья Богданов (Product Manager)
 
 # Запуск
-  Перейти на сайт: [Website]()
+  Перейти на сайт: [Website](http://213.173.108.217:10991)
 
 
 ---
