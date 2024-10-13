@@ -2,6 +2,7 @@ import requests
 
 class LaptopNeuroDataSource:
 
+    #Запрос на сервер
     def sendLaptop(self, id, callback, title):
         filePath = f"image_src/{id}.jpg"
         with open(filePath, 'rb') as file:

@@ -26,20 +26,6 @@ class LaptopDatabaseDataSource:
                 }
             with open('core/database.txt', 'w') as outFile:
                 outFile.write(json.dumps(dictDatabase))
-                # def saveLaptopData(self, id, data):
-    #     with open('core/database.txt', 'r') as file:
-    #         fileBytes = file.read()
-    #         dictDatabase = json.loads(fileBytes)
-    #         print(dictDatabase)
-    #         laptopDatabase = dictDatabase["database"]
-    #         preparedData = {
-    #             "laptop_id":id,
-    #             "data":data
-    #         }
-    #         jsonPreparedData = json.dumps(preparedData)
-    #         laptopDatabase.append(jsonPreparedData)
-    #         dictDatabase["database"] = laptopDatabase
-
 
 
     def getLaptopData(self, id):

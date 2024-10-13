@@ -34,14 +34,9 @@ class LaptopDocsDataSource:
 
             doc.add_picture(image_path,width=Inches(3), height=Inches(2))
 
-
-
-
         # Добавляем изображение
 
         doc.save(f'docx_output/{id}.docx')
-
-
     def createPdf(self, data, id):
         self.createDocx(data, id)
         output_dir = f'pdf_output/'
