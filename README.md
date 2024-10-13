@@ -1,8 +1,14 @@
-# Описание приложения (сайта)
+<img width="100%" alt="image" src="https://github.com/user-attachments/assets/f8650d61-b505-4eea-b03c-23e05a5262c1">
+
+# Описание сайта
 
 Приложение разработано при помощи [Create React App](https://github.com/facebook/create-react-app).
 
-## Как запустить:
+### Деплой
+
+Сайт размещен здесь: [http://213.173.108.217:10991](http://213.173.108.217:10991)
+
+## Как развернуть приложение:
 
 ### `npm install`
 Загрузка необходимых модулей для работы приложения.
@@ -33,7 +39,8 @@
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  FileIcon.js \
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Загрузка снимка \
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  FileUI.js \
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Вьюшка деффектов снимка с возможностью пожаловаться на ошибку и отправить на доработку нейронке \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Вьюшка деффектов снимка с возможностью пожаловаться на ошибку  
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; и отправить на доработку нейронке \
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  GlosView.js \
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Шапка сайта \
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  Header.js \
@@ -43,7 +50,8 @@
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  Lectures.js \
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Загрузка снимков с серийным номером \
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  LectureUpload.js \
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Вьюшка загруженного снимка с возможностью просмотром деффектов, изменения серийного номера и удаления снимка \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Вьюшка загруженного снимка с возможностью просмотром деффектов, \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; изменения серийного номера и удаления снимка \
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  LectureView.js \
 &emsp;&emsp;&emsp; // Папка с используемыми шрифтами \
 &emsp;&emsp;&emsp;└──  font  \
@@ -60,8 +68,3 @@
 &emsp;&emsp;&emsp;├──  index.js \
 &emsp;&emsp;&emsp;&ensp;// константа проекта - ссылка на Api \
 &emsp;&emsp;&emsp;├──  site.js  
-
-### Деплой
-
-Сайт размещен здесь: [http://213.173.108.217:10991](http://213.173.108.217:10991)
-
