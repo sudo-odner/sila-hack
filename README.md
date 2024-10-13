@@ -5,7 +5,7 @@
 
 **Стек:** YOLOv11, PyTorch, FastAPI, React.
 
-## [Screencast]()
+## [Screencast](https://disk.yandex.ru/d/nMgk-9ZPRs2HlA)
 ## [Website](http://213.173.108.217:10991)
 
 ## Команда
