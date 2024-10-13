@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# Описание приложения (сайта)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Приложение разработано при помощи [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Как запустить:
 
-In the project directory, you can run:
+### `npm install`
+Загрузка необходимых модулей для работы приложения.
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Запуск приложения в development моде.\
+Откройте [http://localhost:3000](http://localhost:3000) чтобы увидеть в браузере.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Страница обновляется при изменениях.\
+Могут появится логи недочетов в консоли.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Архитектура приложения
+&nbsp;. \
+└── public \
+&emsp;&emsp;&emsp;├── index.html \
+&emsp;&emsp;&emsp;├── logo.png \
+&emsp;&emsp;&emsp;├── manifest.json \
+└── src \
+&emsp;&emsp;&emsp;&ensp;// компоненты и вьюшки \
+&emsp;&emsp;&emsp;└── components \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├── CleanView.js  
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├── CreateView.js \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Вьюшка для изменения данных снимка \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  EditLectureView.js \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Иконка файла для загрузки \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  FileIcon.js \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Загрузка снимка \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  FileUI.js \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Вьюшка деффектов снимка с возможностью пожаловаться на ошибку и отправкой на доработку нейронке \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  GlosView.js \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Шапка сайта \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  Header.js \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Элемент списка снимков на боковой панели \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  LectureElement.js \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Боковая панель с снимками и поиском/фильтрами \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  Lectures.js \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Загрузка снимка с серийником \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  LectureUpload.js \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Вьюшка загруженного снимка с возможностью удаления, просмотром деффектов и изменения серийного номера \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  LectureView.js \
+&emsp;&emsp;&emsp; // Папка с используемыми шрифтами \
+&emsp;&emsp;&emsp;└──  font  \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; ├── etc .. \
+&emsp;&emsp;&emsp;&ensp;// SVG иконки \
+&emsp;&emsp;&emsp;└──   icons \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; ├── etc .. \
+&emsp;&emsp;&emsp;&ensp;// SCSS файлы для стилизации \
+&emsp;&emsp;&emsp;└──   styles  \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; ├── etc .. \
+&emsp;&emsp;&emsp;&ensp;// приложение  
+&emsp;&emsp;&emsp;├──  App.js \
+&emsp;&emsp;&emsp;&ensp;// стартовый файл \
+&emsp;&emsp;&emsp;├──  index.js \
+&emsp;&emsp;&emsp;&ensp;// константа проекта - ссылка на Api \
+&emsp;&emsp;&emsp;├──  site.js  
 
-### `npm run build`
+### Деплой
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Сайт размещен здесь: [http://213.173.108.217:10991](http://213.173.108.217:10991)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
