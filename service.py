@@ -33,7 +33,7 @@ async def create_upload_file(file: UploadFile):
     titlePredictV2 = ['broken_button', 'broken_pixel', 'chip', 'disassembled_laptop', 'lock', 'missing_button', 'missing_screw', 'scratch']
     titlePredictV3 = ['Сломанная кнопка ', 'Битый пиксель', 'Скол', 'Отсутствие задней крышки', 'Замок', 'Отсутствие клавиши', 'Отсутствие болтика', 'Царапины']
 
-    results = model.predict(pathImage, imgsz=640, conf=0.25, iou=0.45)
+    results = model.predict(pathImage, imgsz=640, conf=0.5, iou=0.45)
     json_result: list[dict] = list()
 
     # Process results list
