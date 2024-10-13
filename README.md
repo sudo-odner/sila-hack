@@ -25,13 +25,149 @@
 ---
 
 # Архитектура
-Основная работа над ветками производилась на разных репозиториях этого проекта
+В данном проекте реализована микросервисная архитектура. Работа над ними производилась на разных ветках этого проекта.
 
-## Backend (ML)
-[Branch](https://github.com/sudo-odner/sila-hack/tree/ml)
+## [Backend (ML)](https://github.com/sudo-odner/sila-hack/tree/ml)
 
-## Frontend (React)
-[Branch](https://github.com/sudo-odner/sila-hack/tree/backend)
+Проект включает микросервис для обработки изображений с использованием YOLO для распознавания объектов, их классификации и дополнительной верификации с использованием Random Forest.
 
-## Backend (FastAPI)
-[Branch](https://github.com/sudo-odner/sila-hack/tree/react)
+### Структура проекта
+
+#### 1. `data/`
+Директория для хранения данных, используемых для обучения и тестирования моделей. Добавлени в .gitignore
+
+#### 2. `model/`
+Содержит версии моделей, начиная с первой и до текущей третьей версии. Модели обновляются по мере прогресса обучения.
+
+#### 3. `runs/`
+Папка, где сохраняются все запуски обучения YOLO, включая результаты и логи.
+
+#### 4. `transportImage/`
+Папка для временного хранения изображений, которые проходят обработку перед классификацией.
+
+#### 5. Основные файлы
+
+- `service.py`: Микросервис, который принимает на вход изображение и возвращает массив с координатами вырезанных областей, а также с их классификацией и вероятностью.
+
+- `yolo.ipynb`: Jupyter notebook с кодом для обучения YOLO на предоставленных данных.
+
+- `checkYolo.ipynb`: Модуль для дополнительной проверки ответа YOLO с использованием модели Random Forest. Включает код для обучения и тестирования модели.
+
+- `yolo11n.pt`: Файл с моделью YOLO 11-й версии, которая используется для предсказаний в текущем микросервисе.
+
+#### 6. Дополнительные файлы
+
+- `.gitignore`: Список файлов и директорий, которые не должны быть добавлены в систему контроля версий Git.
+
+- `requirements.txt`: Файл с зависимостями проекта. Для установки всех необходимых библиотек выполните:
+  ```bash
+  pip install -r requirements.tx
+  ```
+  Для запуска сервера:
+  ```bash
+  uvicorn service:app --host 0.0.0.0 --port 8000
+  ```
+  
+## [Backend (FastAPI)](https://github.com/sudo-odner/sila-hack/tree/backend)
+### Tech stack
+- Python
+- FastAPI
+
+### How to start
+- uvicorn main:app --reload
+
+
+### Architecture
+Архитектура приложения на FastAPI с применением принципов чистой архитектуры предполагает разделение на несколько слоев: Data Source, Data, Domain и Presentation. Рассмотрим каждый из этих слоев подробнее в контексте описанной задачи — загрузка фотографии с фронтенда, получение метаданных через микросервис и сохранение всех данных в базу данных.
+#### Presentation
+Этот слой отвечает за взаимодействие с пользователем (в нашем случае — с фронтендом) и обеспечивает внешнее API для приложения. Здесь находится FastAPI-эндпоинт, который принимает запросы на загрузку фотографии и отправляет ответы клиенту.
+#### Domain
+Это слой, где содержится основная бизнес-логика приложения. Domain Layer не знает, каким образом данные сохраняются или откуда они поступают — он работает с абстракциями и интерфейсами, предоставленными другими слоями.
+#### Data
+Data Layer отвечает за реализацию интерфейсов, предоставляемых Domain Layer, для работы с данными. Этот слой знает, как сохранять и извлекать данные из различных источников — будь то база данных, файловая система или внешние API.
+#### Data Source
+Этот слой отвечает за физическое хранение данных и взаимодействие с внешними системами. Здесь находятся:
+- Механизмы для работы с базой данных, которая хранит информацию о загруженных фотографиях и связанных с ними метаданных.
+- Механизмы для работы с внешним микросервисом, который предоставляет информацию о загруженном изображении (например, анализирует фотографию на предмет распознавания объектов или генерирует метаданные).
+- Механизмы для работы с файловой системой или облачными хранилищами
+
+### Взаимодействие между слоями:
+- Пользователь (фронтенд) отправляет POST-запрос на загрузку фотографии.
+- Presentation Layer (FastAPI-эндпоинт) принимает запрос и файл, передает его в Domain Layer.
+- В Domain Layer проверяются базовые требования к файлу (например, размер и формат), затем выполняется запрос к микросервису через Data Layer для получения метаданных.
+- После получения метаданных Domain Layer передает информацию в Data Layer, который отвечает за сохранение данных в базу данных и, возможно, загрузку файла в файловую систему.
+- Presentation Layer отправляет ответ клиенту о результате операции.
+
+![CleanArchitecture](https://github.com/user-attachments/assets/18f877bc-d715-4b2f-b726-7bd932d3334a)
+## [Frontend (React)](https://github.com/sudo-odner/sila-hack/tree/react)
+
+<img width="100%" alt="image" src="https://github.com/user-attachments/assets/f8650d61-b505-4eea-b03c-23e05a5262c1">
+
+### Описание сайта
+
+Приложение разработано при помощи [Create React App](https://github.com/facebook/create-react-app).
+
+#### Деплой
+
+Сайт размещен здесь: [http://213.173.108.217:10991](http://213.173.108.217:10991)
+
+### Как развернуть приложение:
+
+#### `npm install`
+Загрузка необходимых модулей для работы приложения.
+
+#### `npm start`
+
+Запуск приложения в development моде.\
+Откройте [http://localhost:3000](http://localhost:3000) чтобы увидеть в браузере.
+
+Страница обновляется при изменениях.\
+Могут появится логи недочетов в консоли.
+
+
+### Архитектура приложения
+&nbsp;. \
+└── public \
+&emsp;&emsp;&emsp;├── index.html \
+&emsp;&emsp;&emsp;├── logo.png \
+&emsp;&emsp;&emsp;├── manifest.json \
+└── src \
+&emsp;&emsp;&emsp;&ensp;// компоненты и вьюшки \
+&emsp;&emsp;&emsp;└── components \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├── CleanView.js  
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├── CreateView.js \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Вьюшка для изменения данных снимка \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  EditLectureView.js \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Иконка файла для загрузки \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  FileIcon.js \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Загрузка снимка \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  FileUI.js \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Вьюшка деффектов снимка с возможностью пожаловаться на ошибку  
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; и отправить на доработку нейронке \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  GlosView.js \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Шапка сайта \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  Header.js \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Элемент списка снимков на боковой панели \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  LectureElement.js \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Боковая панель с снимками и поиском/фильтрами \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  Lectures.js \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Загрузка снимков с серийным номером \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  LectureUpload.js \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // Вьюшка загруженного снимка с возможностью просмотром деффектов, \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; изменения серийного номера и удаления снимка \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;├──  LectureView.js \
+&emsp;&emsp;&emsp; // Папка с используемыми шрифтами \
+&emsp;&emsp;&emsp;└──  font  \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; ├── etc .. \
+&emsp;&emsp;&emsp;&ensp;// SVG иконки \
+&emsp;&emsp;&emsp;└──   icons \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; ├── etc .. \
+&emsp;&emsp;&emsp;&ensp;// SCSS файлы для стилизации \
+&emsp;&emsp;&emsp;└──   styles  \
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; ├── etc .. \
+&emsp;&emsp;&emsp;&ensp;// приложение  
+&emsp;&emsp;&emsp;├──  App.js \
+&emsp;&emsp;&emsp;&ensp;// стартовый файл \
+&emsp;&emsp;&emsp;├──  index.js \
+&emsp;&emsp;&emsp;&ensp;// константа проекта - ссылка на Api \
+&emsp;&emsp;&emsp;├──  site.js  
